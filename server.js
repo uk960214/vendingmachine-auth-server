@@ -1,5 +1,6 @@
 const jsonServer = require("json-server");
 const auth = require("json-server-auth");
+const cors = require("cors");
 const port = process.env.PORT || 3000;
 
 const app = jsonServer.create();
@@ -10,5 +11,6 @@ app.db = router.db;
 
 // You must apply the auth middleware before the router
 app.use(auth);
+app.use(cors());
 app.use(router);
 app.listen(port);
