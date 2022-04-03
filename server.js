@@ -10,7 +10,7 @@ const router = jsonServer.router("db.json");
 app.db = router.db;
 
 // You must apply the auth middleware before the router
-app.use(auth);
 app.use(cors());
+app.use(auth);
 app.use(router);
 app.listen(port);
