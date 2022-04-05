@@ -9,8 +9,14 @@ const router = jsonServer.router("db.json");
 // /!\ Bind the router db to the app
 app.db = router.db;
 
-// You must apply the auth middleware before the router
+const rules = auth.rewriter({
+  // Permission rules
+  users: 600,
+});
+
+// You must apply the middlewares in the following order
 app.use(cors());
+app.use(rules);
 app.use(auth);
 app.use(router);
 app.listen(port);
